@@ -1,6 +1,4 @@
-# Home Telemety with Discord
-==Project level 60%== Using Discrod we can esily check water consumption on each day, and check how much the heat pump has used the energy. Discord bot can also print chart show how much HP used energy in relation to the outdoor temperature  
-
+# Home Telemety
 
 -----------------------------------------------------------
 ## Table of contents
@@ -14,11 +12,7 @@
 -----------------------------------------------------------
 # About Project
 
-The MyHome_Telemetry project is about how much my house use: 
-* water (dm3) per 24h/7d/e.t.c
-* energu (kWh) to heat water use heat pump
-
-Tu trzeba coś dopisać i opisać dokończyć bla bla bla 
+The task of the project is to measure the level of water consumption (dm3/day), heat pump energy consumption (W/day), solar panels(W/day). The results are presented via Thingspeak.com.
 
 -----------------------------------------------------------
 ## Measured Values
@@ -29,7 +23,7 @@ Tu trzeba coś dopisać i opisać dokończyć bla bla bla
 ### Water
 -----------------------------------------------------------
 
-For wather measuring i use this water meter. Signal from register go to Anybus M-Bus/Modbus-TCP-Gateway by M-Bus where is convert to Modbus-TCP. From Anybus signal goes by to RasberyPi by TCP/IP protocol in LAN where bot (code in 'bots' file) written by me convert binary value to decimal value and send it to remote database every 5 min. 
+The water meter shown below was used to measure the water. The signal from the water meter goes to the Anybus M-Bus/Modbus-TCP-Gateway by M-Bus where it is converted to Modbus-TCP. The signal then heads to the Rasberry Pi and is sent to the database.  
 
 -----------------------------------------------------------
 ![299819866_476893500568790_1032156745109520596_n](https://user-images.githubusercontent.com/44020188/185767357-36bae3b8-2d75-4846-8627-dfc2f47971b2.jpg)
@@ -39,13 +33,18 @@ For wather measuring i use this water meter. Signal from register go to Anybus M
 
 ### Heat Pump 
 -----------------------------------------------------------
-In Heat Pump situation looks like this. The meter LE-03m is connecter to heat pump and measure how much HP consume energy. Then send singla use MODBUS by RS486  to converter which is connectet to RasberyPi where bot (code in 'bots' file) written by me conver input using this formula ( value = (r0 *(256*256) + r1 * 256 + r2)/10 ) to decimal number and send ist to remote database every 5 min .
+An energy meter LE-03m was used to measure the energy consumption of the heat pump. The meter sends data using MODBUS via RS485. The signal from the converter lands in Reasbery pi where it is sent to the database (AWS). 
 
-Heat Pump also have more features. From HP signal by RS485 goes to 'black-box' and then goes to hub. Using RasberyPi we can read from HP values like: Temperature in boiler, temperature outside, temperature in/out and many many more (but right now i dont have idea/plan how to use this features :/)
+The heat pump also has interesting solutions. Using RS485, we can retrieve such data as outdoor temperature, boiler temperature, etc. 
 
 LE-03M manual - https://www.fif.com.pl/pl/liczniki-zuzycia-energii-elektrycznej/339-licznik-zuzycia-energii-le-03m.html?fbclid=IwAR1bsHkWOV45t7rHKxRCWijoEu41s5mZq2mSojO2wou5koqmfIexHmO2TS0
 
 
+### Solaredge
+-----------------------------------------------------------
+
+Downloading data using the API is very simple. Here we have clear instructions: 
+[Monitoring server API - Knowledge Center](https://knowledge-center.solaredge.com/sites/kc/files/se_monitoring_api.pdf)
 
 -----------------------------------------------------------
 ![300527622_1450506268708443_1793216454363325692_n](https://user-images.githubusercontent.com/44020188/185767364-fde33aef-6c20-453e-b6d4-c1153b6e438e.jpg)
@@ -54,10 +53,18 @@ LE-03M manual - https://www.fif.com.pl/pl/liczniki-zuzycia-energii-elektrycznej/
 
 ## Technologies
 -----------------------------------------------------------
-Project is created with:
-* Python version 3.12
-* Flask\Django\FastAPI
-* Modbus\M-Bus\Modbus-TCP
+Technologies Used
+The following technologies have been used in this project:
+
+Python 3
+RaspberryPi 3
+ESP8266 microcontroller
+Electric water meter with Modbus TCP technology
+Energy consumption meter with MODBUS RS485
+Solar panel manufacturer API
+MySQL database
+Linux Ubuntu OS
+AWS
 
 ## Scheme
 ![image](https://user-images.githubusercontent.com/44020188/187191983-09bdd6a8-7a62-4bd9-ab2f-6382e4290327.png)
