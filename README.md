@@ -7,12 +7,11 @@
 * [Technologies](#technologies)
 * [Scheme](#scheme)
 * [Docker](#docker)
-* [For code reviewer](#for-code-reviewer)
 
 -----------------------------------------------------------
 # About Project
 
-The task of the project is to measure the level of water consumption (dm3/day), heat pump energy consumption (W/day), solar panels(W/day). The results are presented via Thingspeak.com.
+The purpose of the project is to show water consumption, energy by the heat pump, and energy produced by the solar panels. An electric water meter with Modbus TCP technology was used to measure water consumption. For the measurement of energy consumption by the heat pump, an energy consumption meter has been used, the data is transmitted via MODBUS, over an RS485 cable. For the measurement of energy from solars, the API of the solar manufacturer was used. The data is stored in a MySQL database on Ubuntu Linux hosted on AWS. RaspberryPi 3 and ESP8266 microcontroller were used to receive the signal and process the data. All porgrams and all code was written using Python 3.
 
 -----------------------------------------------------------
 ## Measured Values
@@ -56,15 +55,15 @@ Downloading data using the API is very simple. Here we have clear instructions:
 Technologies Used
 The following technologies have been used in this project:
 
-Python 3
-RaspberryPi 3
-ESP8266 microcontroller
-Electric water meter with Modbus TCP technology
-Energy consumption meter with MODBUS RS485
-Solar panel manufacturer API
-MySQL database
-Linux Ubuntu OS
-AWS
+* Python 3
+* RaspberryPi 3
+* ESP8266 microcontroller
+* Electric water meter with Modbus TCP technology
+* Energy consumption meter with MODBUS RS485
+* Solar panel manufacturer API
+* MySQL database
+* Linux Ubuntu OS
+* AWS
 
 ## Scheme
 ![image](https://user-images.githubusercontent.com/44020188/187191983-09bdd6a8-7a62-4bd9-ab2f-6382e4290327.png)
