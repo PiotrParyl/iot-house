@@ -1,7 +1,6 @@
 from pymodbus.client.sync import ModbusTcpClient
 from time import sleep, time
 import datetime
-import mysql.connector
 
 while True:
 
