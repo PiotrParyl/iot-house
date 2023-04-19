@@ -3,7 +3,18 @@ import serial
 from time import sleep, time
 import datetime
 from datetime import datetime
+import mysql.connector
 
+#========================= db.connection #=========================
+
+db = mysql.connector.connect(
+    host="127.0.0.1",
+    user="maczo420all",
+    passwd="Pomidor13",
+    database="metryka",
+)
+
+mycursor = db.cursor()
 
 #========================= licznik connection #=========================
 instrument = minimalmodbus.Instrument('/dev/ttyUSB0', 3)  # port name, slave$
@@ -27,6 +38,8 @@ while True:
         wynik = (r0 *(256*256) + r1 * 256 + r2)/10
         e = datetime.now()
         #========================= dodawanie do bazy danych #===============$
-        wynik = float(wynik)
-        print(wynik)       
+        wynik = str(wynik)
+        mycursor.execute(f"INSERT INTO pompa (value) VALUES({wynik})")
+        db.commit()
+
         sleep(300)   
