@@ -15,5 +15,5 @@ mycursor.execute('SELECT * FROM woda ORDER BY id DESC, value DESC LIMIT 2')
 
 for ziom in mycursor:
     tup = ziom
-    value = tup(1)
+    value = tup[1]
     print(value)
