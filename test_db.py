@@ -11,7 +11,7 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-mycursor.execute('SELECT * FROM woda ORDER BY id DESC, datechat DESC LIMIT 2')
+mycursor.execute('SELECT * FROM woda ORDER BY id DESC, value DESC LIMIT 2')
 
 for ziom in mycursor:
     print(ziom)
