@@ -64,6 +64,7 @@ The following technologies have been used in this project:
 * MySQL database
 * Linux Ubuntu OS
 * AWS
+* lol i want this green box sm!
 
 ## Scheme
 ![image](https://user-images.githubusercontent.com/44020188/187191983-09bdd6a8-7a62-4bd9-ab2f-6382e4290327.png)
